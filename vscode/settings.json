@@ -1,0 +1,32 @@
+{
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": false,
+    "go.toolsEnvVars": {
+        "GO111MODULE": "on"
+    },
+    "explorer.compactFolders": false,
+    "editor.fontFamily": "Myrica M",
+    "editor.fontSize": 16,
+    "workbench.iconTheme": "material-icon-theme",
+    "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}${separator}${appName}",
+    "html.format.endWithNewline": true,
+    "html.format.extraLiners": "",
+    "html.format.indentInnerHtml": false,
+    "html.format.wrapLineLength": 0,
+    "editor.minimap.enabled": false,
+    "workbench.editor.enablePreview": false,
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "window.zoomLevel": 0,
+    "editor.largeFileOptimizations": false,
+    "javascript.suggest.autoImports": false,
+    "typescript.suggest.autoImports": true,
+    "autoimport.doubleQuotes": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDragAndDrop": false,
+    "javascript.validate.enable": false,
+    "standard.autoFixOnSave": true,
+    "standard.engine": "ts-standard"
+}
