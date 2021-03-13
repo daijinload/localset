@@ -215,14 +215,15 @@ sudo apt install -y pinta
 # clusterssh
 sudo apt install -y clusterssh
 
-# ntp server setup and set timezone（timeserver設定が無いので時間がずれる）
-# ntpも入っていてsystemd-timesyncdと競合を起こすので削除してからインストールする
+# ntp server setup and set timezone（デフォルトだと、timeserver設定が無いので時間がずれる）
+# linuxmintはデフォルトでntpとsystemd-timesyncdが入っているので、競合を起こすのでntpを削除してからインストールする
 sudo apt purge ntp
 sudo sed -i -e"s/^#NTP=/NTP=ntp.nict.jp/" /etc/systemd/timesyncd.conf
 cat /etc/systemd/timesyncd.conf
 sudo systemctl restart systemd-timesyncd
 timedatectl set-timezone Asia/Tokyo
-timedatectl
+timedatectl set-ntp true
+timedatectl status
 # timedatectl -no-pager list-timezones | grep Asia/To
 
 # Protocol Buffersの定義ファイルをフォーマットするために導入
