@@ -349,7 +349,9 @@ GOROOT="/usr/local/go"
 xmodmap ~/.Xmodmap
 
 EOS
-source ~/.bashrc
+
+# インストール後、再起動推奨なので、この時点でロードしない
+# source ~/.bashrc
 
 ################# .bashrc end
 
