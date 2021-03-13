@@ -6,10 +6,6 @@
 # curl -O https://raw.githubusercontent.com/daijinload/localset/main/linuxmint-install.sh
 # bash -ex linuxmint-install.sh 2>linuxmint-install-error.log
 
-# sample deamon kidou command
-# while true; do date; sleep 1s; done 2>&1 > aaa.log &
-
-
 ### windowsのdiskpartによるHDDの全セクタ0write
 ### パーティションなどがおかしくなった場合に、実行すると初期状態にリセットできる。
 ### それ狙いなら先頭だけ消去できればいいので5秒ぐらいで終わりにして良い。
@@ -64,8 +60,8 @@ curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > package
 sudo install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
-sudo apt update -y
-sudo apt upgrade -y
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
 ################# ppa all end
 
@@ -99,11 +95,11 @@ EOF
 # chrome
 cd /tmp
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install -y ./google-chrome-stable_current_amd64.deb
+sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
 rm -rf google-chrome-stable_current_amd64.deb
 
 # tooles
-sudo apt install -y subversion curl vim build-essential
+sudo apt-get install -y subversion curl vim build-essential
 
 # sdkman for java11
 curl -s "https://get.sdkman.io" | bash
@@ -118,7 +114,7 @@ sdk install java
 sudo update-alternatives --config editor
 
 # git install
-sudo apt install -y git
+sudo apt-get install -y git
 
 # git branch console view
 cd && wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
@@ -139,7 +135,7 @@ git config --global pager.tag cat
 # meld and git setup
 # gitのdifftoolでmeldが開くようにする
 # sudo add-apt-repository -y -n ppa:sicklylife/ppa 
-sudo apt install -y meld
+sudo apt-get install -y meld
 cat << EOS >> ~/.gitconfig
 [diff]
         tool = meld
@@ -152,9 +148,9 @@ EOS
 # git difftool -d
 
 # vscode (visual studio code)
-sudo apt install -y apt-transport-https
-sudo apt update
-sudo apt install -y code
+sudo apt-get install -y apt-transport-https
+sudo apt-get update
+sudo apt-get install -y code
 
 ## vscode settings copy
 cd /tmp
@@ -177,26 +173,26 @@ sudo sysctl -p
 ################# 単独でインストールできるもの
 
 # ファイル監視＆コマンド実行用ツール
-sudo apt install -y inotify-tools
+sudo apt-get install -y inotify-tools
 ## while inotifywait -qq -e close_write,moved_to,create -r `pwd`; do echo "aaa"; done
 
 # password Generator
-sudo apt install -y pwgen
+sudo apt-get install -y pwgen
 pwgen -sy 16 100
 
 ## MongoDB 4.0系
 ## see https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 # sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
 # echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
-# sudo apt update
-# sudo apt install -y mongodb-org=4.0.6 mongodb-org-server=4.0.6 mongodb-org-shell=4.0.6 mongodb-org-mongos=4.0.6 mongodb-org-tools=4.0.6
-sudo apt install -y mongodb-org
+# sudo apt-get update
+# sudo apt-get install -y mongodb-org=4.0.6 mongodb-org-server=4.0.6 mongodb-org-shell=4.0.6 mongodb-org-mongos=4.0.6 mongodb-org-tools=4.0.6
+sudo apt-get install -y mongodb-org
 sudo service mongod start
 mongo --version
 # sudo service mongod stop
 
 # nkf [Network Kanji Filter] の略。文字コード変換に使う -wのオプションは、URF-8に変換する
-sudo apt install -y nkf
+sudo apt-get install -y nkf
 # find -name '*.txt' | xargs nkf --overwrite -w
 
 # 顔文字 cp932だからUTF-8に変換している
@@ -211,21 +207,21 @@ unzip -O sjis Myrica.zip
 sudo mv Myrica.TTC /usr/local/share/fonts/
 
 # Geany text editor
-sudo apt install -y geany
+sudo apt-get install -y geany
 cd /tmp
 git clone --depth 1 https://github.com/codebrainz/geany-themes
 mkdir -p ~/.config/geany/colorschemes
 cp ./geany-themes/colorschemes/* ~/.config/geany/colorschemes/
 
 # お絵かきソフト　pinta
-sudo apt install -y pinta
+sudo apt-get install -y pinta
 
 # clusterssh
-sudo apt install -y clusterssh
+sudo apt-get install -y clusterssh
 
 # ntp server setup and set timezone（デフォルトだと、timeserver設定が無いので時間がずれる）
 # linuxmintはデフォルトでntpとsystemd-timesyncdが入っているので、競合を起こすのでntpを削除してからインストールする
-sudo apt purge ntp
+sudo apt-get purge ntp
 sudo sed -i -e"s/^#NTP=/NTP=ntp.nict.jp/" /etc/systemd/timesyncd.conf
 cat /etc/systemd/timesyncd.conf
 sudo systemctl restart systemd-timesyncd
@@ -235,15 +231,15 @@ timedatectl status
 # timedatectl -no-pager list-timezones | grep Asia/To
 
 # Protocol Buffersの定義ファイルをフォーマットするために導入
-sudo apt install -y clang-format
+sudo apt-get install -y clang-format
 
 ## ubuntu focal docker install (20.04LTS)
-sudo apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
 
 ## ubuntu docker command no use sudo (require user exit or os reboot)
 sudo usermod -aG docker $USER
@@ -252,7 +248,7 @@ sudo chmod +x /usr/bin/docker-compose
 
 
 # ■Ubuntu18.04 nameserver設定 必要であれば設定する！！
-# sudo apt install -y resolvconf
+# sudo apt-get install -y resolvconf
 ### sudo tee -a /etc/resolvconf/resolv.conf.d/head << 'EOF' 追記
 # sudo tee /etc/resolvconf/resolv.conf.d/head << 'EOF'
 ## Dynamic resolv.conf(5) file for glibc resolver(3) generated by resolvconf(8)
@@ -372,7 +368,7 @@ EOF
 ### srcからnetbeansをインストールする場合の手順（今だとほぼやらない手順かな）
 ### ant install for netbeans
 # sdk use java java 8.0.202-amzn
-# sudo apt install -y ant
+# sudo apt-get install -y ant
 
 ### ビルドに時間が掛るので注意！！ Total time: 11 minutes 38 seconds 6コアでこの時間だから、しょぼいPCだと1時間は見たほうが良いかも。。。
 ### netbeans10 vc5
@@ -395,16 +391,16 @@ EOF
 # ant tryme
 
 ### MariaDB 10.3 install
-# sudo apt install -y software-properties-common
+# sudo apt-get install -y software-properties-common
 # sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
 # sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://ftp.yz.yamagata-u.ac.jp/pub/dbms/mariadb/repo/10.3/ubuntu bionic main'
-# sudo apt update
-# sudo apt install -y mariadb-server
+# sudo apt-get update
+# sudo apt-get install -y mariadb-server
 # sudo mysql_secure_installation
 
 
 # mariaDB 10.1? install
-# sudo apt install -y mariadb-server
+# sudo apt-get install -y mariadb-server
 # # セキュリティ設定。Localアクセスのみなら全てYesでやってよい。
 # # VirtualBoxを使う場合、あとで、リモートアクセス出来るようにmy.confを書き換えること！！
 # sudo mysql_secure_installation
@@ -518,3 +514,7 @@ EOF
 
 # 解凍
 # tar -xvf aaa.tar.gz
+
+# sample deamon kidou command
+# while true; do date; sleep 1s; done 2>&1 > aaa.log &
+
