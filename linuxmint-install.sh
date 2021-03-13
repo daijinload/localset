@@ -216,6 +216,8 @@ sudo apt install -y pinta
 sudo apt install -y clusterssh
 
 # ntp server setup and set timezone（timeserver設定が無いので時間がずれる）
+# ntpも入っていてsystemd-timesyncdと競合を起こすので削除してからインストールする
+sudo apt purge ntp
 sudo sed -i -e"s/^#NTP=/NTP=ntp.nict.jp/" /etc/systemd/timesyncd.conf
 cat /etc/systemd/timesyncd.conf
 sudo systemctl restart systemd-timesyncd
