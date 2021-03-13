@@ -206,6 +206,7 @@ sudo mv Myrica.TTC /usr/local/share/fonts/
 sudo apt install -y geany
 cd /tmp
 git clone --depth 1 https://github.com/codebrainz/geany-themes
+mkdir ~/.config/geany/colorschemes
 cp ./geany-themes/colorschemes/* ~/.config/geany/colorschemes/
 
 # お絵かきソフト　pinta
