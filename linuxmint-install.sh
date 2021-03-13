@@ -78,7 +78,7 @@ AddKeysToAgent yes
 EOF
 
 # connect check!!
-ssh -T -i ~/.ssh/id_ed25519_daijin github_daijin
+# ssh -T -i ~/.ssh/id_ed25519_daijin github_daijin
 
 # 個人と会社を使い分ける際に、sshの設定を元に鍵ファイルを変更する必要がある場合、初回のgit cloneを下記のようにする
 # git clone github_daijin:daijinload/rust-test.git
