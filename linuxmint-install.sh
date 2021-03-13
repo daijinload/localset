@@ -280,7 +280,7 @@ nvm use node
 
 ################# .bashrc start
 
-cat << 'EOS' >> .bashrc
+cat << 'EOS' >> ~/.bashrc
 ##### original adding #####
 
 # alias
