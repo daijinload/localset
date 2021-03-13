@@ -2,6 +2,14 @@
 # linuxmint installのシェルスクリプト
 # 出来るだけ自動にしたが、ところどころyes no聞かれるのでちょいちょい確認して答えていく必要がある。。。
 
+# let`s install
+# curl -O https://raw.githubusercontent.com/daijinload/localset/main/linuxmint-install.sh
+# bash -ex linuxmint-install.sh 2>linuxmint-install-error.log
+
+# sample deamon kidou command
+# while true; do date; sleep 1s; done 2>&1 > aaa.log &
+
+
 ### windowsのdiskpartによるHDDの全セクタ0write
 ### パーティションなどがおかしくなった場合に、実行すると初期状態にリセットできる。
 ### それ狙いなら先頭だけ消去できればいいので5秒ぐらいで終わりにして良い。
