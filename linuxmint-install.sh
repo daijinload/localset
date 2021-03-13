@@ -151,6 +151,7 @@ sudo apt install -y code
 ## vscode settings copy
 cd /tmp
 git clone --depth 1 https://github.com/daijinload/localset.git
+mkdir -p ~/.config/Code/User
 cp ./localset/vscode/* ~/.config/Code/User/
 
 ## visual studio code のファイル総数error対策 ここから
